@@ -1,0 +1,12 @@
+[user]
+	name = Albert Bachand
+	email = albertb@gmail.com
+[color]
+	status = auto
+	branch = auto
+[alias]
+  ci = commit
+  co = checkout
+  st = status
+  br = branch
+  sh = stash

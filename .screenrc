@@ -1,0 +1,9 @@
+# .screenrc
+startup_message off
+nethack on
+vbell off
+msgminwait 0
+msgwait 10
+
+hardstatus on
+hardstatus alwayslastline "%{=b}%{G} Screens: %{b}%w %=%{kG}"
