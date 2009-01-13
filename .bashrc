@@ -35,3 +35,7 @@ function millis() {
 function epoch() {
   date -d "$1" +%s
 }
+
+if [ -f ${HOME}/.bashrc.extra ]; then
+  . ${HOME}/.bashrc.extra
+fi
