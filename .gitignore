@@ -1,0 +1,8 @@
+*
+!.bashrc
+!.gitconfig
+!.gitignore
+!.inputrc
+!.screenrc
+!.vimrc
+!.xmonad/xmonad.hs
