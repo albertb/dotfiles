@@ -1,9 +1,10 @@
 [user]
-	name = Albert Bachand
-	email = albertb@gmail.com
+  name = Albert Bachand
+  email = albertb@gmail.com
 [color]
-	status = auto
-	branch = auto
+  status = auto
+  branch = auto
+  diff = auto
 [alias]
   ci = commit
   co = checkout
