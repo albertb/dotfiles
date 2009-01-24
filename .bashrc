@@ -15,7 +15,7 @@ export EDITOR=vim
 
 # Aliases.
 alias j='jobs -l'
-alias ls='ls -F -G'
+alias ls='ls -F --color=auto'
 alias l='ls -alF'
 alias mv='mv -i'
 alias rm='rm -i'
@@ -23,6 +23,7 @@ alias cp='cp -ip'
 alias e='gvim'
 alias grep='grep --color'
 alias dv='setxkbmap dvorak'
+alias gith='git --git-dir=.git-home'
 
 function micros() {
   python -c "import datetime; print datetime.datetime.fromtimestamp($1/1000000)"
