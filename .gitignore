@@ -4,5 +4,7 @@
 !.gitignore
 !.inputrc
 !.screenrc
+!.vim
+!.vim/colors/inkpot.vim
 !.vimrc
 !.xmonad/xmonad.hs
