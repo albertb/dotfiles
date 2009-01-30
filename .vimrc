@@ -1,6 +1,7 @@
 " .vimrc
 set nowrap
 set smartindent
+set autoindent
 set showtabline=2
 set expandtab
 set hidden
@@ -14,9 +15,12 @@ set hlsearch
 set incsearch
 set shortmess=atl
 set textwidth=0
+set shiftwidth=2
+set tabstop=2
+set vb
 
 syntax on
-colorscheme desert
+colorscheme inkpot
 
 " Dvorak it!
 no d h
@@ -51,11 +55,13 @@ map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
 
 function! HighlightTooLongLines()
   highlight def link RightMargin Error
-  if &textwidth != 0
-    exec 'match RightMargin /\%<' . (&textwidth + 4) . 'v.\%>' . (&textwidth + 2) . 'v/'
-  endif
+  exec 'match RightMargin /\%<' . (84) . 'v.\%>' . (82) . 'v/'
 endfunction
 
 augroup filetypedetect
 au BufNewFile,BufRead * call HighlightTooLongLines()
 augroup END
+
+" show whitespace at end of lines
+highlight WhitespaceEOL ctermbg=lightgray guibg=lightgray
+match WhitespaceEOL /s+$/
