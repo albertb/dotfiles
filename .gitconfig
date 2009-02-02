@@ -11,3 +11,5 @@
   st = status
   br = branch
   sh = stash
+[core]
+  excludesfile = ~/.gitexcludes

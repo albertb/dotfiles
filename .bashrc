@@ -23,7 +23,7 @@ alias cp='cp -ip'
 alias e='gvim'
 alias grep='grep --color'
 alias dv='setxkbmap dvorak'
-alias gith='git --git-dir=.git-home'
+alias gith='git --git-dir=.githome'
 
 function micros() {
   python -c "import datetime; print datetime.datetime.fromtimestamp($1/1000000)"
