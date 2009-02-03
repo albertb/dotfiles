@@ -20,7 +20,7 @@ alias l='ls -alF'
 alias mv='mv -i'
 alias rm='rm -i'
 alias cp='cp -ip'
-alias e='gvim'
+alias e='/Applications/MacVim.app/Contents/MacOS/Vim -g'
 alias grep='grep --color'
 alias dv='setxkbmap dvorak'
 
