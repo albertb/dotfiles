@@ -1,23 +1,23 @@
 " .vimrc
-set nowrap
-set smartindent
 set autoindent
-set showtabline=2
 set expandtab
 set hidden
+set hlsearch
+set ignorecase
+set incsearch
+set nowrap
+set scrolloff=3
+set shiftwidth=2
+set showtabline=2
+set shortmess=atl
+set smartcase
+set smartindent
+set tabstop=2
+set textwidth=0
+set title
+set visualbell
 set wildmenu
 set wildmode=list:longest
-set ignorecase
-set smartcase
-set title
-set scrolloff=3
-set hlsearch
-set incsearch
-set shortmess=atl
-set textwidth=0
-set shiftwidth=2
-set tabstop=2
-set vb
 
 syntax on
 colorscheme inkpot
@@ -55,7 +55,7 @@ map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
 
 function! HighlightTooLongLines()
   highlight def link RightMargin Error
-  exec 'match RightMargin /\%<' . (84) . 'v.\%>' . (82) . 'v/'
+  exec 'match RightMargin /\%<' . (81) . 'v.\%>' . (83) . 'v/'
 endfunction
 
 augroup filetypedetect

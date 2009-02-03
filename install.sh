@@ -1,7 +1,7 @@
 #!/bin/sh
 
 for file in $(ls -A); do
-  if [ ${file} != ${BASH_SOURCE} ]; then
-    ln -vsf ${PWD}/${file} ${HOME}/test/${file}
-  fi
+  [ ${file} == "install.sh" ] ||
+  [ ${file} == ".git" ] ||
+  ln -vsf ${PWD}/${file} ${HOME}/test/${file}
 done
