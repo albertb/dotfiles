@@ -15,7 +15,7 @@ export EDITOR=vim
 
 # Aliases.
 alias j='jobs -l'
-alias ls='ls -F --color=auto'
+alias ls='ls -FG'
 alias l='ls -alF'
 alias mv='mv -i'
 alias rm='rm -i'
