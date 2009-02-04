@@ -1,7 +1,7 @@
 #!/bin/sh
 
-rm -vf ${HOME}/.xmonad &&
-rm -vf ${HOME}/.vim &&
+rm -rvf ${HOME}/.xmonad &&
+rm -rvf ${HOME}/.vim &&
 for file in $(ls -A); do
   [ ${file} == "install.sh" ] ||
   [ ${file} == ".git" ] ||
