@@ -6,10 +6,10 @@
   branch = auto
   diff = auto
 [alias]
+  br = branch
   ci = commit
   co = checkout
-  st = status
-  br = branch
   sh = stash
+  st = status
 [core]
   excludesfile = ~/.gitexcludes
