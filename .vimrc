@@ -1,5 +1,9 @@
 " .vimrc
+
+source /home/build/public/eng/vim/google.vim
+
 set autoindent
+set encoding=utf-8
 set expandtab
 set hidden
 set hlsearch
@@ -19,8 +23,10 @@ set visualbell
 set wildmenu
 set wildmode=list:longest
 
+runtime macros/matchit.vim
+
 syntax on
-colorscheme inkpot
+colorscheme desert
 
 " Dvorak it!
 no d h
@@ -32,6 +38,9 @@ no S :
 no j d
 no l n
 no L N
+
+" F2 formats to 80 cols
+map #2 !fmt -80
 
 "switch between .h / -inl.h / .cc / .py / .js / _test.* / _unittest.* with ,h ,i ,c ,p ,j ,t ,u
 "(portion from old mail from David Reiss)
@@ -53,6 +62,38 @@ map ,< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
 " c++ java style comments
 map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
 
+" perforce commands
+command! -nargs=* -complete=file PEdit :!g4 edit %
+command! -nargs=* -complete=file PRevert :!g4 revert %
+command! -nargs=* -complete=file PDiff :!g4 diff %
+
+function! s:CheckOutFile()
+ if filereadable(expand("%")) && ! filewritable(expand("%"))
+   let option = confirm("Readonly file, do you want to checkout from p4?"
+         \, "&Yes\n&No", 1, "Question")
+   if option == 1
+     PEdit
+   endif
+   edit!
+ endif
+endfunction
+au FileChangedRO * nested :call <SID>CheckOutFile()
+
+function! EnterPerforceFile()
+  setlocal nolist noet tw=0 ts=8 sw=8 sts=8 ft=conf
+  if search("<enter description here>") > 0
+    normal C
+    startins!
+  elseif bufname('*') != 'message'
+    /^Description:/
+    normal 2w
+  endif
+endfunction
+
+augroup filetypedetect
+au BufNewFile,BufRead /tmp/g4_*,*p4-change*,*p4-client* call EnterPerforceFile()
+augroup END
+
 function! HighlightTooLongLines()
   highlight def link RightMargin Error
   exec 'match RightMargin /\%<' . (81) . 'v.\%>' . (83) . 'v/'
@@ -65,3 +106,5 @@ augroup END
 " show whitespace at end of lines
 highlight WhitespaceEOL ctermbg=lightgray guibg=lightgray
 match WhitespaceEOL /s+$/
+
+source ~/local/surround.vim

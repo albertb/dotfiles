@@ -1,15 +1,15 @@
 [user]
   name = Albert Bachand
-  email = albertb@gmail.com
+  email = albertb@google.com
 [color]
   status = auto
   branch = auto
   diff = auto
 [alias]
+  br = branch
   ci = commit
   co = checkout
-  st = status
-  br = branch
   sh = stash
+  st = status
 [core]
   excludesfile = ~/.gitexcludes
