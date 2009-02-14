@@ -20,7 +20,7 @@ set wildmenu
 set wildmode=list:longest
 
 syntax on
-colorscheme inkpot
+colorscheme desert
 
 " Dvorak it!
 no d h
@@ -32,6 +32,9 @@ no S :
 no j d
 no l n
 no L N
+
+" F2 formats to 80 cols
+map #2 !fmt -80
 
 "switch between .h / -inl.h / .cc / .py / .js / _test.* / _unittest.* with ,h ,i ,c ,p ,j ,t ,u
 "(portion from old mail from David Reiss)
