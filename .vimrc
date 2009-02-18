@@ -9,6 +9,7 @@ set hidden
 set hlsearch
 set ignorecase
 set incsearch
+set laststatus=2
 set nowrap
 set scrolloff=3
 set shiftwidth=2
@@ -22,6 +23,8 @@ set title
 set visualbell
 set wildmenu
 set wildmode=list:longest
+
+set statusline=%<[%02n]\ %F%(\ %m%h%w%r%)\ %a%=\ %8l,%c%V/%L\ (%P)\ [%04O:%02B]
 
 runtime macros/matchit.vim
 
