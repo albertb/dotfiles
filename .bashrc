@@ -8,7 +8,7 @@ export HISTCONTROL=ignoreboth
 shopt -s histappend
 shopt -s checkwinsize
 
-PATH=${PATH}:${HOME}/bin:${HOME}/local/bin
+PATH=${PATH}:${HOME}/bin:${HOME}/local/bin:${HOME}/.cabal/bin
 
 export PS1="\[\033[01;30m\][\t][\w]\n\[\033[01;32m\]\u@\h\[\033[01;34m\] \$\[\033[00m\] "
 export EDITOR=vim
