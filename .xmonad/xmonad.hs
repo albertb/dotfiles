@@ -3,9 +3,8 @@
 
 import XMonad
 import XMonad.Config.Gnome
-import XMonad.Layout.DragPane
+import XMonad.Hooks.FadeInactive
 import XMonad.Layout.DwmStyle
-import XMonad.Layout.TwoPane
 import qualified XMonad.StackSet as W
 
 import qualified Data.Map as M
@@ -14,6 +13,9 @@ import System.Exit
 myModMask = mod4Mask
 
 myLayoutHook = dwmStyle shrinkText defaultTheme (layoutHook gnomeConfig) 
+
+myLogHook :: X ()
+myLogHook = fadeInactiveLogHook fadeAmount where fadeAmount = 0xdddddddd
 
 -- dvorak mappings
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
@@ -35,7 +37,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((myModMask              , xK_f     ), withFocused $ windows . W.sink)
     , ((myModMask              , xK_w     ), sendMessage (IncMasterN 1))
     , ((myModMask              , xK_v     ), sendMessage (IncMasterN (-1)))
-    , ((myModMask .|. shiftMask, xK_q     ), spawn "gnome-session-save --kill")
+    , ((myModMask .|. shiftMask, xK_q     ), spawn "gnome-session-save --gui --kill")
     , ((myModMask              , xK_q     ), restart "xmonad" True)
     , ((myModMask              , xK_x     ), spawn "xlock")
     ]
