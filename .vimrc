@@ -24,7 +24,9 @@ set visualbell
 set wildmenu
 set wildmode=list:longest
 
-set statusline=%<[%02n]\ %F%(\ %m%h%w%r%)\ %a%=\ %8l,%c%V/%L\ (%P)\ [%04O:%02B]
+set statusline=%<[%02n]\ %F%(\ %m%h%w%r%)\ %a%=\ %8l,%c%V/%L\ (%P)\ [%02B]
+
+runtime macros/matchit.vim
 
 runtime macros/matchit.vim
 
