@@ -28,8 +28,6 @@ set statusline=%<[%02n]\ %F%(\ %m%h%w%r%)\ %a%=\ %8l,%c%V/%L\ (%P)\ [%02B]
 
 runtime macros/matchit.vim
 
-runtime macros/matchit.vim
-
 syntax on
 colorscheme desert
 
