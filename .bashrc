@@ -8,7 +8,7 @@ export HISTCONTROL=ignoreboth
 shopt -s histappend
 shopt -s checkwinsize
 
-PATH=${PATH}:${HOME}/bin:${HOME}/local/bin:${HOME}/.cabal/bin
+PATH=${PATH}:${HOME}/bin:${HOME}/local/bin:${HOME}/.cabal/bin:/usr/local/home/albertb/chromium/depot_tools
 
 export PS1="\[\033[01;30m\][\t][\w]\n\[\033[01;32m\]\u@\h\[\033[01;34m\] \$\[\033[00m\] "
 export EDITOR=vim
@@ -72,6 +72,10 @@ export P4EDITOR="gvim -f"
 
 alias startvnc="x11vnc -display :0 -auth /tmp/.gdm??????"
 
+function gmeld() {
+  git meld $(git5 status --base)
+}
+
 function runmr() {
 borgcfg \
  /home/build/google3/production/borg/templates/java/mapreduce/mapreduce.borg \
@@ -87,6 +91,25 @@ borgcfg \
 function killcl() {
   P4CLIENT=`p4 describe -s $1 | head -1 | awk '{ print $4; }' | sed 's/.*@//g'`
   g4 revert -c $1
+}
+
+function listcl() {
+  pushd ${PWD}
+  for d in ~/src/*; do
+    cd $d
+    echo $d
+    git5 pending
+  done
+  popd
+}
+
+function n() {
+  ($@)
+  if [ $? = 0 ]; then
+    notify-send -i info -- "Success" "$*"
+  else
+    notify-send -i error -- "Failure" "$*"
+  fi
 }
 
 source /home/build/google3/devtools/blaze/scripts/blaze-complete.bash

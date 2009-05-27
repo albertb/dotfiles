@@ -13,3 +13,6 @@
   st = status
 [core]
   excludesfile = ~/.gitexcludes
+[gc]
+	autopacklimit = 0
+	auto = 0
