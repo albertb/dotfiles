@@ -3,17 +3,16 @@
 
 import XMonad
 import XMonad.Config.Gnome
-import XMonad.Layout.DragPane
 import XMonad.Layout.DwmStyle
-import XMonad.Layout.TwoPane
+import XMonad.Layout.WindowNavigation
 import qualified XMonad.StackSet as W
 
 import qualified Data.Map as M
 import System.Exit
 
-myModMask = mod1Mask
+myModMask = mod4Mask
 
-myLayoutHook = dwmStyle shrinkText defaultTheme (layoutHook gnomeConfig) 
+myLayoutHook = dwmStyle shrinkText defaultTheme (windowNavigation (layoutHook gnomeConfig))
 
 -- dvorak mappings
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
@@ -35,9 +34,17 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((myModMask              , xK_f     ), withFocused $ windows . W.sink)
     , ((myModMask              , xK_w     ), sendMessage (IncMasterN 1))
     , ((myModMask              , xK_v     ), sendMessage (IncMasterN (-1)))
-    , ((myModMask .|. shiftMask, xK_q     ), spawn "gnome-session-save --kill")
+    , ((myModMask .|. shiftMask, xK_q     ), spawn "gnome-session-save --gui --kill")
     , ((myModMask              , xK_q     ), restart "xmonad" True)
     , ((myModMask              , xK_x     ), spawn "xlock")
+    , ((myModMask,                 xK_Right), sendMessage $ Go R)
+    , ((myModMask,                 xK_Left ), sendMessage $ Go L)
+    , ((myModMask,                 xK_Up   ), sendMessage $ Go U)
+    , ((myModMask,                 xK_Down ), sendMessage $ Go D)
+    , ((myModMask .|. controlMask, xK_Right), sendMessage $ Swap R)
+    , ((myModMask .|. controlMask, xK_Left ), sendMessage $ Swap L)
+    , ((myModMask .|. controlMask, xK_Up   ), sendMessage $ Swap U)
+    , ((myModMask .|. controlMask, xK_Down ), sendMessage $ Swap D)
     ]
     ++
     [((m .|. myModMask, k), windows $ f i)
@@ -48,5 +55,7 @@ main = xmonad $ gnomeConfig
      { modMask = myModMask
      , layoutHook = myLayoutHook
      , keys = myKeys
+     , normalBorderColor = "#000022"
+     , focusedBorderColor = "#33CCFF"
      }
 

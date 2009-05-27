@@ -1,5 +1,9 @@
 " .vimrc
+
+source /home/build/public/eng/vim/google.vim
+
 set autoindent
+set encoding=utf-8
 set expandtab
 set hidden
 set hlsearch
@@ -21,6 +25,8 @@ set wildmenu
 set wildmode=list:longest
 
 set statusline=%<[%02n]\ %F%(\ %m%h%w%r%)\ %a%=\ %8l,%c%V/%L\ (%P)\ [%02B]
+
+runtime macros/matchit.vim
 
 syntax on
 colorscheme desert
@@ -58,6 +64,38 @@ map ,/ :s/^/\/\//<CR>
 map ,< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
 " c++ java style comments
 map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
+
+" perforce commands
+command! -nargs=* -complete=file PEdit :!g4 edit %
+command! -nargs=* -complete=file PRevert :!g4 revert %
+command! -nargs=* -complete=file PDiff :!g4 diff %
+
+function! s:CheckOutFile()
+ if filereadable(expand("%")) && ! filewritable(expand("%"))
+   let option = confirm("Readonly file, do you want to checkout from p4?"
+         \, "&Yes\n&No", 1, "Question")
+   if option == 1
+     PEdit
+   endif
+   edit!
+ endif
+endfunction
+au FileChangedRO * nested :call <SID>CheckOutFile()
+
+function! EnterPerforceFile()
+  setlocal nolist noet tw=0 ts=8 sw=8 sts=8 ft=conf
+  if search("<enter description here>") > 0
+    normal C
+    startins!
+  elseif bufname('*') != 'message'
+    /^Description:/
+    normal 2w
+  endif
+endfunction
+
+augroup filetypedetect
+au BufNewFile,BufRead /tmp/g4_*,*p4-change*,*p4-client* call EnterPerforceFile()
+augroup END
 
 function! HighlightTooLongLines()
   highlight def link RightMargin Error
