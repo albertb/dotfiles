@@ -49,7 +49,6 @@ export GOOGLE_USE_CORP_SSL_AGENT=true
 export GFS_CLIENT_SECURITY_LEVEL=integrity
 
 export MOZ_DISABLE_PANGO=1
-export MOZ_NO_REMOTE=1
 
 alias fu="fileutil"
 alias h="ssh -Y bistro.sfo"
@@ -91,25 +90,6 @@ borgcfg \
 function killcl() {
   P4CLIENT=`p4 describe -s $1 | head -1 | awk '{ print $4; }' | sed 's/.*@//g'`
   g4 revert -c $1
-}
-
-function listcl() {
-  pushd ${PWD}
-  for d in ~/src/*; do
-    cd $d
-    echo $d
-    git5 pending
-  done
-  popd
-}
-
-function n() {
-  ($@)
-  if [ $? = 0 ]; then
-    notify-send -i info -- "Success" "$*"
-  else
-    notify-send -i error -- "Failure" "$*"
-  fi
 }
 
 source /home/build/google3/devtools/blaze/scripts/blaze-complete.bash
