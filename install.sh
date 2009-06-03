@@ -5,5 +5,5 @@ rm -rvf ${HOME}/.vim &&
 for file in $(ls -A); do
   [ ${file} == "install.sh" ] ||
   [ ${file} == ".git" ] ||
-  ln -vsF ${PWD}/${file} ${HOME}/${file}
+  (rm ${HOME}/${file}; ln -vsF ${PWD}/${file} ${HOME}/${file})
 done
