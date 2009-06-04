@@ -1,5 +1,6 @@
 " .vimrc
 set autoindent
+set encoding=utf-8
 set expandtab
 set hidden
 set hlsearch
@@ -20,7 +21,9 @@ set visualbell
 set wildmenu
 set wildmode=list:longest
 
-set statusline=%<[%02n]\ %F%(\ %m%h%w%r%)\ %a%=\ %8l,%c%V/%L\ (%P)\ [%02B]
+set statusline=%<[%02n]\ %F%(\ %m%h%w%r%)\ %a%=\ %8l,%c%V/%L\ (%P)\ [%03b]
+
+runtime macros/matchit.vim
 
 syntax on
 colorscheme desert
