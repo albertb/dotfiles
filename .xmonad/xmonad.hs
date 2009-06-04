@@ -3,12 +3,15 @@
 
 import XMonad
 import XMonad.Config.Gnome
+import XMonad.Hooks.DynamicLog
 import XMonad.Layout.DwmStyle
 import XMonad.Layout.WindowNavigation
+import XMonad.Util.Run(spawnPipe)
 import qualified XMonad.StackSet as W
 
 import qualified Data.Map as M
 import System.Exit
+import System.IO
 
 myModMask = mod4Mask
 
@@ -37,25 +40,27 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((myModMask .|. shiftMask, xK_q     ), spawn "gnome-session-save --gui --kill")
     , ((myModMask              , xK_q     ), restart "xmonad" True)
     , ((myModMask              , xK_x     ), spawn "xlock")
-    , ((myModMask,                 xK_Right), sendMessage $ Go R)
-    , ((myModMask,                 xK_Left ), sendMessage $ Go L)
-    , ((myModMask,                 xK_Up   ), sendMessage $ Go U)
-    , ((myModMask,                 xK_Down ), sendMessage $ Go D)
-    , ((myModMask .|. controlMask, xK_Right), sendMessage $ Swap R)
-    , ((myModMask .|. controlMask, xK_Left ), sendMessage $ Swap L)
-    , ((myModMask .|. controlMask, xK_Up   ), sendMessage $ Swap U)
-    , ((myModMask .|. controlMask, xK_Down ), sendMessage $ Swap D)
+    , ((myModMask              , xK_Right ), sendMessage $ Go R)
+    , ((myModMask              , xK_Left  ), sendMessage $ Go L)
+    , ((myModMask              , xK_Up    ), sendMessage $ Go U)
+    , ((myModMask              , xK_Down  ), sendMessage $ Go D)
+    , ((myModMask .|. shiftMask, xK_Right ), sendMessage $ Swap R)
+    , ((myModMask .|. shiftMask, xK_Left  ), sendMessage $ Swap L)
+    , ((myModMask .|. shiftMask, xK_Up    ), sendMessage $ Swap U)
+    , ((myModMask .|. shiftMask, xK_Down  ), sendMessage $ Swap D)
     ]
     ++
     [((m .|. myModMask, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
-main = xmonad $ gnomeConfig
-     { modMask = myModMask
-     , layoutHook = myLayoutHook
-     , keys = myKeys
-     , normalBorderColor = "#000022"
-     , focusedBorderColor = "#33CCFF"
-     }
-
+main = do
+    xmobar <- spawnPipe "xmobar"
+    xmonad $ gnomeConfig
+           { modMask = myModMask
+           , layoutHook = myLayoutHook
+--           , logHook = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmobar }
+           , keys = myKeys
+           , normalBorderColor = "#000022"
+           , focusedBorderColor = "#33CCFF"
+           }
