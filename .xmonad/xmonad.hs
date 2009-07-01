@@ -24,6 +24,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((myModMask .|. shiftMask, xK_c     ), kill)
     , ((myModMask              , xK_space ), sendMessage NextLayout)
     , ((myModMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+    , ((myModMask              , xK_s     ), sendMessage NextLayout)
+    , ((myModMask .|. shiftMask, xK_s     ), setLayout $ XMonad.layoutHook conf)
     , ((myModMask              , xK_a     ), refresh)
     , ((myModMask              , xK_Tab   ), windows W.focusDown)
     , ((myModMask              , xK_h     ), windows W.focusDown)
@@ -55,7 +57,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 main = do
-    xmobar <- spawnPipe "xmobar"
+--    xmobar <- spawnPipe "xmobar"
     xmonad $ gnomeConfig
            { modMask = myModMask
            , layoutHook = myLayoutHook
