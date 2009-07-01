@@ -8,7 +8,9 @@ export HISTCONTROL=ignoreboth
 shopt -s histappend
 shopt -s checkwinsize
 
-PATH=${PATH}:${HOME}/bin:${HOME}/local/bin:${HOME}/.cabal/bin:/usr/local/home/albertb/chromium/depot_tools
+PATH=${PATH}:${HOME}/bin:${HOME}/local/bin:${HOME}/.cabal/bin
+PATH=${PATH}:/usr/local/google/home/albertb/chrome/depot_tools
+PATH=${PATH}:${HOME}/src/git-cl
 
 export PS1="\[\033[01;30m\][\t][\w]\n\[\033[01;32m\]\u@\h\[\033[01;34m\] \$\[\033[00m\] "
 export EDITOR=vim
@@ -49,6 +51,10 @@ export GOOGLE_USE_CORP_SSL_AGENT=true
 export GFS_CLIENT_SECURITY_LEVEL=integrity
 
 export MOZ_DISABLE_PANGO=1
+
+alias blaze="n blaze"
+alias borgcfg="n borgcfg"
+alias mpm="n mpm"
 
 alias fu="fileutil"
 alias h="ssh -Y bistro.sfo"
@@ -92,5 +98,6 @@ function killcl() {
   g4 revert -c $1
 }
 
+source /etc/bash_completion.d/git
 source /home/build/google3/devtools/blaze/scripts/blaze-complete.bash
 complete -C/home/build/static/projects/filecomplete fileutil codex fu
