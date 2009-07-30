@@ -1,6 +1,6 @@
 [user]
   name = Albert Bachand
-  email = albertb@google.com
+  email = albertb@gmail.com
 [color]
   status = auto
   branch = auto
@@ -12,7 +12,4 @@
   sh = stash
   st = status
 [core]
-  excludesfile = ~/.gitexcludes
-[gc]
-	autopacklimit = 0
-	auto = 0
+  excludesfile = /home/albertb/.gitexcludes

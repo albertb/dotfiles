@@ -57,11 +57,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 main = do
---    xmobar <- spawnPipe "xmobar"
     xmonad $ gnomeConfig
            { modMask = myModMask
            , layoutHook = myLayoutHook
---           , logHook = dynamicLogWithPP $ xmobarPP { ppOutput = hPutStrLn xmobar }
            , keys = myKeys
            , normalBorderColor = "#000022"
            , focusedBorderColor = "#33CCFF"
