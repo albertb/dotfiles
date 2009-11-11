@@ -4,7 +4,10 @@
 import XMonad
 import XMonad.Config.Gnome
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.ManageDocks
 import XMonad.Layout.DwmStyle
+import XMonad.Layout.ThreeColumns
 import XMonad.Layout.WindowNavigation
 import XMonad.Util.Run(spawnPipe)
 import qualified XMonad.StackSet as W
@@ -15,7 +18,9 @@ import System.IO
 
 myModMask = mod4Mask
 
-myLayoutHook = dwmStyle shrinkText defaultTheme (windowNavigation (layoutHook gnomeConfig))
+myLayoutHook = dwmStyle shrinkText defaultTheme
+    (windowNavigation (ewmhDesktopsLayout $ avoidStruts $
+        (layoutHook defaultConfig ||| ThreeCol 1 (3/100) (1/2))))
 
 -- dvorak mappings
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
