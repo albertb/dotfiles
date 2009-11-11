@@ -4,7 +4,7 @@ set autoindent
 set cul
 set encoding=utf-8
 set expandtab
-set nohidden
+set hidden
 set hlsearch
 set ignorecase
 set incsearch
@@ -32,19 +32,12 @@ syntax on
 colorscheme desert
 
 " Dvorak it!
-no d h
-no h j
-no t k
-no n l
 no s :
 no S :
-no j d
-no l n
-no L N
 
 imap hh <esc>
 map <c-s> :bn<enter>
-map <c-d> :bp<enter>
+map <c-n> :bp<enter>
 
 " w!! sudo saves
 cmap w!! %!sudo tee > /dev/null %
