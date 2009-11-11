@@ -77,3 +77,5 @@ augroup END
 " show whitespace at end of lines
 highlight WhitespaceEOL ctermbg=lightgray guibg=lightgray
 match WhitespaceEOL /\s\+$/
+
+source ~/.vimrc.local

@@ -40,3 +40,5 @@ function millis() {
 function epoch() {
   date -d "$1" +%s
 }
+
+source ~/.bashrc.local
