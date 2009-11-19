@@ -41,4 +41,4 @@ function epoch() {
   date -d "$1" +%s
 }
 
-source ~/.bashrc.local
+[ ! -f ~/.bashrc.local ] || source ~/.bashrc.local
