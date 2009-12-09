@@ -19,7 +19,7 @@ import System.IO
 myModMask = mod4Mask
 
 myLayoutHook = dwmStyle shrinkText defaultTheme
-    (windowNavigation (ewmhDesktopsLayout $ avoidStruts $
+    (windowNavigation (avoidStruts $
         (layoutHook defaultConfig ||| ThreeCol 1 (3/100) (1/2))))
 
 -- dvorak mappings
