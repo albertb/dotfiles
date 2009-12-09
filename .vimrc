@@ -78,6 +78,6 @@ augroup END
 highlight WhitespaceEOL ctermbg=lightgray guibg=lightgray
 match WhitespaceEOL /\s\+$/
 
-if filereadable("~/.vimrc.local")
-  source ~/.vimrc.local
+if filereadable("/home/albertb/.vimrc.local")
+  source /home/albertb/.vimrc.local
 endif
