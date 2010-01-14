@@ -1,5 +1,7 @@
 # .bashrc
 
+PATH=${HOME}/bin:${HOME}/.cabal/bin:${PATH}
+
 # If not running interactively, don't do anything.
 [ -z "$PS1" ] && return
 
@@ -7,8 +9,6 @@
 export HISTCONTROL=ignoreboth
 shopt -s histappend
 shopt -s checkwinsize
-
-PATH=${HOME}/bin:${HOME}/.cabal/bin:${PATH}
 
 export PS1="\[\033[01;30m\][\t][\w]\n\[\033[01;32m\]\u@\h\[\033[01;34m\] \$\[\033[00m\] "
 export EDITOR=vim
