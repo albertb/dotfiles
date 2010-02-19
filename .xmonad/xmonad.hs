@@ -57,7 +57,7 @@ myModMask :: KeyMask
 myModMask = mod4Mask
 
 myTerminal :: String
-myTerminal = "gnome-terminal"  -- FIXME: setup antialias in urxvt
+myTerminal = "urxvt"
 
 myWorkspaces :: [WorkspaceId]
 myWorkspaces = [show x | x <- [1..9]]
