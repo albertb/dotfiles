@@ -15,7 +15,7 @@ main :: IO ()
 main = xmonad =<< xmobar defaultConfig
     { keys = myKeys
     , layoutHook = myLayoutHook
-    , manageHook = manageDocks <+> manageHook defaultConfig
+    , manageHook = myManageHook
     , modMask = myModMask
     , terminal = myTerminal
     , workspaces = myWorkspaces
@@ -52,6 +52,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 myLayoutHook = avoidStruts $ tiled ||| Mirror tiled ||| Full
     where tiled = Tall 1 (3 / 100) (1 / 2)
+
+myManageHook :: ManageHook
+myManageHook = composeAll
+    [ (title =? "Google Chrome Options" <||> title =? "Chromium Options") --> doFloat
+    , manageDocks
+    ]
+    <+> manageHook defaultConfig
 
 myModMask :: KeyMask
 myModMask = mod4Mask
