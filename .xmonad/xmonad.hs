@@ -55,7 +55,10 @@ myLayoutHook = avoidStruts $ tiled ||| Mirror tiled ||| Full
 
 myManageHook :: ManageHook
 myManageHook = composeAll
-    [ (title =? "Google Chrome Options" <||> title =? "Chromium Options") --> doFloat
+    [ (     title =? "Google Chrome Options"
+       <||> title =? "Chromium Options"
+       <||> title =? "Set up sync"
+      ) --> doFloat
     , manageDocks
     ]
     <+> manageHook defaultConfig
