@@ -1,6 +1,6 @@
 # .bashrc
 
-PATH=${HOME}/bin:${HOME}/.cabal/bin:${PATH}
+PATH=${HOME}/bin:${PATH}
 
 # If not running interactively, don't do anything.
 [ -z "$PS1" ] && return
@@ -39,6 +39,10 @@ function millis() {
 
 function epoch() {
   date -d "$1" +%s
+}
+
+function gd() {
+  godoc $* | less
 }
 
 [ ! -f ~/.bashrc.local ] || source ~/.bashrc.local
