@@ -5,6 +5,7 @@ import XMonad
 import XMonad.Actions.Volume
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Layout.WindowNavigation
 import XMonad.Util.Run(spawnPipe)
 import System.Exit
 import System.IO
@@ -29,6 +30,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask              , xK_d      ), sendMessage Shrink)
     , ((modMask              , xK_f      ), withFocused $ windows . W.sink)
     , ((modMask              , xK_h      ), windows W.focusDown)
+    , ((modMask .|. shiftMask, xK_h      ), sendMessage $ Swap D)
     , ((modMask              , xK_n      ), sendMessage Expand)
     , ((modMask .|. shiftMask, xK_q      ), io (exitWith ExitSuccess))
     , ((modMask              , xK_q      ), spawn "xmonad --recompile; xmonad --restart")
@@ -42,9 +44,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask              , xK_Tab    ), windows W.focusDown)
     , ((modMask .|. shiftMask, xK_Tab    ), windows W.focusUp)
     , ((modMask              , xK_t      ), windows W.focusUp)
+    , ((modMask .|. shiftMask, xK_t      ), sendMessage $ Swap U)
     , ((modMask              , xK_v      ), sendMessage (IncMasterN (-1)))
     , ((modMask              , xK_w      ), sendMessage (IncMasterN 1))
-    , ((modMask              , xK_x      ), spawn "xlock")
+    , ((modMask              , xK_x      ), spawn "xscreensaver-command -lock")
     , ((0                    , 0x1008ff12), toggleMute >> return ())
     , ((0                    , 0x1008ff11), lowerVolume 4 >> return ())
     , ((0                    , 0x1008ff13), raiseVolume 4 >> return ())
@@ -54,7 +57,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
-myLayoutHook = avoidStruts $ tiled ||| Mirror tiled ||| Full
+myLayoutHook = windowNavigation (avoidStruts $ tiled ||| Mirror tiled ||| Full)
     where tiled = Tall 1 (3 / 100) (1 / 2)
 
 myManageHook :: ManageHook
