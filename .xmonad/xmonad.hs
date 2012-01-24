@@ -18,6 +18,8 @@ main = xmonad =<< xmobar defaultConfig
     { keys = myKeys
     , layoutHook = myLayoutHook
     , manageHook = myManageHook
+    , normalBorderColor = "#000000"
+    , borderWidth = 2
     , modMask = myModMask
     , terminal = myTerminal
     , workspaces = myWorkspaces
@@ -57,7 +59,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
-myLayoutHook = windowNavigation (avoidStruts $ tiled ||| Mirror tiled ||| Full)
+myLayoutHook = windowNavigation (avoidStruts $ tiled ||| Full)
     where tiled = Tall 1 (3 / 100) (1 / 2)
 
 myManageHook :: ManageHook
