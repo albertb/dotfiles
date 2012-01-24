@@ -11,3 +11,7 @@
   st = status
 [core]
   excludesfile = /home/albertb/.gitexcludes
+[log]
+  date = local
+[merge]
+  tool = meld
