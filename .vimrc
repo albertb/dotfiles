@@ -1,5 +1,7 @@
 " .vimrc
 
+call pathogen#infect()
+
 set autoindent
 set cul
 set encoding=utf-8
@@ -42,9 +44,6 @@ map <c-n> :bp<enter>
 " w!! sudo saves
 cmap w!! %!sudo tee > /dev/null %
 
-" F2 formats to 80 cols
-map #2 !fmt -80
-
 "switch between .h / -inl.h / .cc / .py / .js / _test.* / _unittest.* with ,h ,i ,c ,p ,j ,t ,u
 "(portion from old mail from David Reiss)
 let pattern = '\(\(_\(unit\)\?test\)\?\.\(cc\|js\|py\)\|\(-inl\)\?\.h\)$'
@@ -64,19 +63,6 @@ map ,/ :s/^/\/\//<CR>
 map ,< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
 " c++ java style comments
 map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
-
-function! HighlightTooLongLines()
-  highlight def link RightMargin Error
-  exec 'match RightMargin /\%<' . (81) . 'v.\%>' . (83) . 'v/'
-endfunction
-
-augroup filetypedetect
-  au BufNewFile,BufRead * call HighlightTooLongLines()
-augroup END
-
-" show whitespace at end of lines
-highlight WhitespaceEOL ctermbg=lightgray guibg=lightgray
-match WhitespaceEOL /\s\+$/
 
 if filereadable("/home/albertb/.vimrc.local")
   source /home/albertb/.vimrc.local
