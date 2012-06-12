@@ -64,6 +64,6 @@ map ,< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
 " c++ java style comments
 map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
 
-if filereadable("/home/albertb/.vimrc.local")
-  source /home/albertb/.vimrc.local
+if filereadable(expand("$HOME/.vimrc.local"))
+  source $HOME/.vimrc.local
 endif
