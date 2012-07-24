@@ -2,7 +2,7 @@
 -- Author: albertb@gmail.com (Albert Bachand)
 
 import XMonad
-import XMonad.Actions.Volume
+--import XMonad.Actions.Volume
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.WindowNavigation
@@ -50,9 +50,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask              , xK_v      ), sendMessage (IncMasterN (-1)))
     , ((modMask              , xK_w      ), sendMessage (IncMasterN 1))
     , ((modMask              , xK_x      ), spawn "xscreensaver-command -lock")
-    , ((0                    , 0x1008ff12), toggleMute >> return ())
-    , ((0                    , 0x1008ff11), lowerVolume 4 >> return ())
-    , ((0                    , 0x1008ff13), raiseVolume 4 >> return ())
+    , ((modMask              , xK_y      ), spawn "fetchotp next -x")
+    , ((0                    , xK_F9     ), spawn "vol mute")
+    , ((0                    , xK_F10    ), spawn "vol minus")
+    , ((0                    , xK_F11    ), spawn "vol plus")
     ]
     ++
     [((m .|. myModMask, k), windows $ f i)

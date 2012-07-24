@@ -64,6 +64,10 @@ map ,< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
 " c++ java style comments
 map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
 
+" Customize qnamefile
+nmap ,F :call QNameFileInit("", "", 0)<cr>:~
+nmap ,f :call QNameBufInit(1)<cr>:~
+
 if filereadable(expand("$HOME/.vimrc.local"))
   source $HOME/.vimrc.local
 endif
