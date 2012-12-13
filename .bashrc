@@ -19,9 +19,14 @@ alias l='ls -alF'
 alias mv='mv -i'
 alias rm='rm -i'
 alias cp='cp -ip'
-alias e='gvim'
 alias grep='grep --color'
 alias dv='setxkbmap dvorak'
+
+if [[ ${DISPLAY} == "" ]]; then
+  alias e='vim'
+else
+  alias e='gvim'
+fi
 
 if [[ $(uname) == "Darwin" ]]; then
   alias ls='ls -FG'
