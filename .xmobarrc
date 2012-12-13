@@ -3,9 +3,9 @@ Config { font = "xft:inconsolata-10"
        , fgColor = "grey"
        , position = Top
        , lowerOnStart = True
-       , commands = [ Run Weather "KJFK" ["-t","<skyCondition> <tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
-                    , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
-                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+       , commands = [ Run Weather "KNYC" ["-t","<skyCondition> <tempC>C","-L","15","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
+                    , Run Network "eth0" ["-L","0","-H","1024","--normal","green","--high","red"] 10
+                    , Run MultiCpu ["-t","Cpu%: <autototal>","-L","3","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run Date "%a %b %_d %H:%M" "date" 10
@@ -13,5 +13,5 @@ Config { font = "xft:inconsolata-10"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu% | %memory% - %swap% | %eth0% | <fc=#ee9a00>%date%</fc> | %KJFK%"
+       , template = "%StdinReader% }{ %multicpu% | %memory% - %swap% | %eth0% | <fc=#ee9a00>%date%</fc> | %KNYC%"
        }
