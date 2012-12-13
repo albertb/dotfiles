@@ -66,14 +66,12 @@ myLayoutHook = windowNavigation (avoidStruts $ tiled ||| Full)
 myManageHook :: ManageHook
 myManageHook = composeAll
     [ (     title =? "Google Chrome Options"
-       <||> title =? "Google Chrome Preferences"
-       <||> title =? "Chromium Options"
-       <||> title =? "Chromium Preferences"
-       <||> title =? "Set up sync"
+       <||> role =? "pop-up"
       ) --> doFloat
     , manageDocks
     ]
     <+> manageHook defaultConfig
+    where role = stringProperty "WM_WINDOW_ROLE"
 
 myModMask :: KeyMask
 myModMask = mod4Mask
