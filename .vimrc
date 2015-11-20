@@ -51,6 +51,8 @@ cmap w!! %!sudo tee > /dev/null %
 nmap ,F :call QNameFileInit("", "", 0)<cr>:~
 nmap ,f :call QNameBufInit(1)<cr>:~
 
+let mapleader = ","
+
 if filereadable(expand("$HOME/.vimrc.local"))
   source $HOME/.vimrc.local
 endif

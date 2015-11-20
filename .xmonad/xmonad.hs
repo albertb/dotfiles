@@ -4,6 +4,7 @@
 import XMonad
 --import XMonad.Actions.Volume
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ICCCMFocus
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.WindowNavigation
 import XMonad.Util.Run(spawnPipe)
@@ -23,6 +24,13 @@ main = xmonad =<< xmobar defaultConfig
     , modMask = myModMask
     , terminal = myTerminal
     , workspaces = myWorkspaces
+    , startupHook = do
+      takeTopFocus
+      spawn "/usr/bin/xcompmgr"
+      spawn "xrandr --dpi 96x96"
+      spawn "/usr/bin/xscreensaver -no-splash"
+      -- TODO: run this only once
+      spawn "/usr/bin/redshift -l 44.44:-74.0"
     }
 
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
@@ -77,7 +85,7 @@ myModMask :: KeyMask
 myModMask = mod4Mask
 
 myTerminal :: String
-myTerminal = "urxvt"
+myTerminal = "rxvt"
 
 myWorkspaces :: [WorkspaceId]
 myWorkspaces = [show x | x <- [1..9]]

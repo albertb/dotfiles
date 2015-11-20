@@ -1,6 +1,7 @@
 Rxvt*background: #000000
 Rxvt*foreground: #aaaaaa
-Rxvt*font: xft:Inconsolata-12
+!Rxvt*font: xft:Inconsolata-12
+Rxvt*font: xft:DejaVu Sans Mono:size=12
 Rxvt*saveLines:32767
 Rxvt*scrollBar: false
 
