@@ -28,9 +28,6 @@ main = xmonad =<< xmobar defaultConfig
       takeTopFocus
       spawn "/usr/bin/xcompmgr"
       spawn "xrandr --dpi 96x96"
-      spawn "/usr/bin/xscreensaver -no-splash"
-      -- TODO: run this only once
-      spawn "/usr/bin/redshift -l 44.44:-74.0"
     }
 
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
