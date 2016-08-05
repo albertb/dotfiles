@@ -62,7 +62,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     ]
     ++
     [((m .|. myModMask, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+        | (i, k) <- zip (XMonad.workspaces conf) ([xK_1 .. xK_9] ++ [xK_0])
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 myLayoutHook = windowNavigation (avoidStruts $ tiled ||| Full)
@@ -85,4 +85,4 @@ myTerminal :: String
 myTerminal = "rxvt"
 
 myWorkspaces :: [WorkspaceId]
-myWorkspaces = [show x | x <- [1..9]]
+myWorkspaces = [show x | x <- [1..9] ++ [0]]
