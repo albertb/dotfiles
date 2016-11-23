@@ -1,0 +1,3 @@
+[submodule ".vim/bundle/qnamebuf"]
+	path = .vim/bundle/qnamebuf
+	url = https://github.com/vim-scripts/qnamebuf.git
