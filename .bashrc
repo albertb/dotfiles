@@ -21,6 +21,9 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias cp='cp -ip'
 alias grep='grep --color'
+
+alias kus='setxkbmap us'
+alias kfr='setxkbmap ca,fr'
 alias dv='setxkbmap dvorak'
 
 if [[ ${DISPLAY} == "" ]]; then
