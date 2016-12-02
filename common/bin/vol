@@ -1,0 +1,13 @@
+#!/bin/bash
+
+case "${1}" in
+  plus)
+    amixer -D pulse sset Master 5%+
+    ;;
+  minus)
+    amixer -D pulse sset Master 5%-
+    ;;
+  mute)
+    amixer -D pulse set  Master 1+ toggle
+    ;;
+esac

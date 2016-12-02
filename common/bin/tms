@@ -1,0 +1,18 @@
+#!/bin/bash
+
+(( $# == 0 )) && echo "$(date +%s)000000" && exit
+# Print timestamp
+for ts in "$@"; do
+  [[ $ts = *[a-f]* && $ts != 0x* ]] && ts="0x$ts"
+
+  [[ $ts = "" ]] && echo "Usage: $0 timestamp" >&2 && exit 1
+  if (( $ts > 0x100000000000 ))
+  then
+    echo "Microseconds: $(date -d "Jan 1 1970 UTC + $(( $ts / 1000000 )) seconds")"
+  elif (( $ts > 0x1000000000 ))
+  then
+    echo "Milliseconds: $(date -d "Jan 1 1970 UTC + $(( $ts / 1000 )) seconds")"
+  else
+    echo "Seconds: $(date -d "Jan 1 1970 UTC + $ts seconds")"
+  fi
+done
