@@ -1,8 +1,4 @@
--- XMonad configuration
--- Author: albertb@gmail.com (Albert Bachand)
-
 import XMonad
---import XMonad.Actions.Volume
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ICCCMFocus
 import XMonad.Hooks.ManageDocks
@@ -54,7 +50,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_t      ), sendMessage $ Swap U)
     , ((modMask              , xK_v      ), sendMessage (IncMasterN (-1)))
     , ((modMask              , xK_w      ), sendMessage (IncMasterN 1))
-    , ((modMask              , xK_x      ), spawn "xscreensaver-command -lock")
+    , ((modMask              , xK_x      ), spawn "gnome-screensaver-command -l")
     , ((modMask              , xK_y      ), spawn "fetchotp next -x")
     , ((0                    , xK_F9     ), spawn "vol mute")
     , ((0                    , xK_F10    ), spawn "vol minus")
