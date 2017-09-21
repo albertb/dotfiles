@@ -52,9 +52,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask              , xK_w      ), sendMessage (IncMasterN 1))
     , ((modMask              , xK_x      ), spawn "gnome-screensaver-command -l")
     , ((modMask              , xK_y      ), spawn "fetchotp next -x")
-    , ((0                    , xK_F9     ), spawn "vol mute")
-    , ((0                    , xK_F10    ), spawn "vol minus")
-    , ((0                    , xK_F11    ), spawn "vol plus")
+    , ((0                    , xK_F9     ), spawn "~/bin/vol mute")
+    , ((0                    , xK_F10    ), spawn "~/bin/vol minus")
+    , ((0                    , xK_F11    ), spawn "~/bin/vol plus")
     ]
     ++
     [((m .|. myModMask, k), windows $ f i)

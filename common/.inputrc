@@ -5,5 +5,3 @@ set visible-stats on
 
 "\e[B": history-search-forward
 "\e[A": history-search-backward
-
-set -o vi
