@@ -47,11 +47,15 @@ map <c-o> :cprev<enter>
 " w!! sudo saves
 cmap w!! %!sudo tee > /dev/null %
 
-" Customize qnamebuf
-nmap ,F :call QNameFileInit("", "", 0)<cr>:~
-nmap ,f :call QNameBufInit(1)<cr>:~
-
 let mapleader = ","
+
+" Customize qnamebuf
+nmap <leader>f :call QNameBufInit(1)<cr>:~
+
+" Customize CtrlP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_user_command = 'cd %s && hg files'
+let g:ctrlp_map = ',F'
 
 if filereadable(expand("$HOME/.vimrc.local"))
   source $HOME/.vimrc.local
