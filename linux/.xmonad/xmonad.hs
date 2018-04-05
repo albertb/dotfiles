@@ -1,4 +1,5 @@
 import XMonad
+import XMonad.Actions.CopyWindow
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ICCCMFocus
 import XMonad.Hooks.ManageDocks
@@ -28,7 +29,8 @@ main = xmonad =<< xmobar defaultConfig
 
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
-    [ ((modMask              , xK_a      ), refresh)
+    [ ((modMask              , xK_a      ), windows copyToAll)
+    , ((modMask .|. shiftMask, xK_a      ), killAllOtherCopies)
     , ((modMask .|. shiftMask, xK_c      ), kill)
     , ((modMask              , xK_d      ), sendMessage Shrink)
     , ((modMask              , xK_f      ), withFocused $ windows . W.sink)
