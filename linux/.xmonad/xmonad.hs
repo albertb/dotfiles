@@ -23,7 +23,7 @@ main = xmonad =<< xmobar defaultConfig
     , workspaces = myWorkspaces
     , startupHook = do
       takeTopFocus
-      spawn "/usr/bin/xcompmgr"
+      --spawn "/usr/bin/xcompmgr"
       spawn "xrandr --dpi 96x96"
     }
 
@@ -52,8 +52,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_t      ), sendMessage $ Swap U)
     , ((modMask              , xK_v      ), sendMessage (IncMasterN (-1)))
     , ((modMask              , xK_w      ), sendMessage (IncMasterN 1))
-    , ((modMask              , xK_x      ), spawn "gnome-screensaver-command -l")
-    , ((modMask              , xK_y      ), spawn "fetchotp next -x")
+    , ((modMask              , xK_x      ), spawn "/usr/share/goobuntu-desktop-files/xsecurelock.sh")
     , ((0                    , xK_F9     ), spawn "~/bin/vol mute")
     , ((0                    , xK_F10    ), spawn "~/bin/vol minus")
     , ((0                    , xK_F11    ), spawn "~/bin/vol plus")
