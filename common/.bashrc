@@ -54,4 +54,8 @@ function gd() {
   godoc $* | less
 }
 
+function dns2ip() {
+    dig +short $* | sed "/[^0-9\.]/d" # use sed to remove non-IPv4 line e.g. alias
+}
+
 [ ! -f ~/.bashrc.local ] || source ~/.bashrc.local
