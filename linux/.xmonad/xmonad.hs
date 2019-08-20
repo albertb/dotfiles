@@ -79,7 +79,7 @@ myModMask :: KeyMask
 myModMask = mod4Mask
 
 myTerminal :: String
-myTerminal = "rxvt"
+myTerminal = "urxvt"
 
 myWorkspaces :: [WorkspaceId]
 myWorkspaces = [show x | x <- [1..9] ++ [0]]

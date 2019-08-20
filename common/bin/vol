@@ -2,12 +2,12 @@
 
 case "${1}" in
   plus)
-    amixer sset Master 5%+
+    amixer sset Front 5%+
     ;;
   minus)
-    amixer sset Master 5%-
+    amixer sset Front 5%-
     ;;
   mute)
-    amixer set Master 1+ toggle
+    amixer set Front 1+ toggle
     ;;
 esac
